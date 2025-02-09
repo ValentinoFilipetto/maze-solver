@@ -26,7 +26,6 @@ def main():
     # first_cell.draw_move(second_cell)
 
     maze = Maze(50, 50, 10, 10, 25, 25, win)
-    maze._create_cells()
 
     win.wait_for_close()
 

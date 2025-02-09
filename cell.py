@@ -4,7 +4,7 @@ from window import Line, Point
 class Cell:
     def __init__(
         self,
-        win,
+        win=None,
     ):
         self.has_left_wall = True
         self.has_right_wall = True
@@ -17,6 +17,9 @@ class Cell:
         self._win = win
 
     def draw(self, x1, x2, y1, y2):
+        if self._win is None:
+            return
+
         self._x1 = x1
         self._x2 = x2
         self._y1 = y1
@@ -40,6 +43,8 @@ class Cell:
         return Point((self._x1 + side_length / 2), (self._y1 + side_length / 2))
 
     def draw_move(self, to_cell, undo=False):
+        if self._win is None:
+            return
         line = Line(self.determine_center(), to_cell.determine_center())
 
         if undo:
